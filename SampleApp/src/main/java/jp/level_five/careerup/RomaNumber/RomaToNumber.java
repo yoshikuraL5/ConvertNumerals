@@ -14,7 +14,6 @@ public class RomaToNumber {
 					+ valueC(charArray, i) + valueD(charArray, i)
 					+ valueM(charArray, i);
 		}
-		System.out.println(number);
 		checkString(number, string);
 		return number;
 	}
