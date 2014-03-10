@@ -8,11 +8,10 @@ public class NumberToRoma {
 
 	public String convertNtoR(int i) {
 		checkInput(i);
-		String str = String.valueOf(i);
-		char[] chararray = str.toCharArray();
+		char[] chararray = String.valueOf(i).toCharArray();
 		List<String> strarray = pushList(chararray);
 		Iterator<String> iterator = strarray.iterator();
-		str = replaceDigitsPlace(str, strarray, iterator);
+		String str = replaceDigitsPlace(strarray, iterator);
 		return str;
 	}
 	
@@ -29,53 +28,53 @@ public class NumberToRoma {
 		return strarray;
 	}
 	
-	private String replaceDigitsPlace(String string, List<String> strarray, Iterator<String> iterator) {
+	private String replaceDigitsPlace(List<String> strarray, Iterator<String> iterator) {
 		String[][] romanArray = new String[][]{
 				{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
 				{"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
 				{"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
 				{"", "M", "MM", "MMM", "", "", "", "", "", ""},};
-		String str = replaceOnesPlace(strarray, iterator, romanArray, string);
-		str = replaceTensPlace(strarray, iterator, romanArray, str);
-		str = replaceHundredsPlace(strarray, iterator, romanArray, str);
-		str = replaceThousandsPlace(strarray, iterator, romanArray, str);
+		String str = replaceOnesPlace(strarray, iterator, romanArray);
+		str = replaceTensPlace(strarray, iterator, romanArray) + str;
+		str = replaceHundredsPlace(strarray, iterator, romanArray) + str;
+		str = replaceThousandsPlace(strarray, iterator, romanArray) + str;
 		return str;
 	}
 	
-	private String replaceOnesPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray, String str) {
+	private String replaceOnesPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray) {
 		if(iterator.hasNext()){
 			int number = Integer.parseInt(iterator.next());
 			strarray.set(0, romanArray[0][number]);
-			str = strarray.get(0);
+			return strarray.get(0);
 			}
-		return str;
+		return "";
 	}
 	
-	private String replaceTensPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray, String str) {
+	private String replaceTensPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray) {
 		if(iterator.hasNext()){
-		int number = Integer.parseInt(iterator.next());
-		strarray.set(1, romanArray[1][number]);
-		str = strarray.get(1) + str;
+			int number = Integer.parseInt(iterator.next());
+			strarray.set(1, romanArray[1][number]);
+			return strarray.get(1);
 		}
-		return str;
+		return "";
 	}
 	
-	private String replaceHundredsPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray, String str) {
+	private String replaceHundredsPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray) {
 		if(iterator.hasNext()){
-		int number = Integer.parseInt(iterator.next());
-		strarray.set(2, romanArray[2][number]);
-		str = strarray.get(2) + str;
+			int number = Integer.parseInt(iterator.next());
+			strarray.set(2, romanArray[2][number]);
+			return strarray.get(2);
 		}
-		return str;
+		return "";
 	}
 	
-	private String replaceThousandsPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray, String str) {
+	private String replaceThousandsPlace(List<String> strarray, Iterator<String> iterator, String[][] romanArray) {
 		if(iterator.hasNext()){
-		int number = Integer.parseInt(iterator.next());
-		strarray.set(3, romanArray[3][number]);
-		str = strarray.get(3) + str;
+			int number = Integer.parseInt(iterator.next());
+			strarray.set(3, romanArray[3][number]);
+			return strarray.get(3);
 		}
-		return str;
+		return "";
 	}
 }
 
