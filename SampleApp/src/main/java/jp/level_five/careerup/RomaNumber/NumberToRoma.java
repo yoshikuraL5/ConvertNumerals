@@ -76,7 +76,6 @@ public class NumberToRoma {
 		}
 		return "";
 	}
-	//コメント
 }
 
 
