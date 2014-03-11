@@ -68,4 +68,9 @@ public class NumberToRomaTest {
 		String str = numberToRoma.convertNtoR(1888);
 		assertEquals("MDCCCLXXXVIII", str);
 	}
+	@Test 
+	public void test半角数字の31を渡すとXXXIが返ってくる(){
+		String str = numberToRoma.convertNtoR(31);
+		assertEquals("XXXI", str);
+	}
 }
