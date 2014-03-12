@@ -13,6 +13,8 @@ public class NumberToRoma {
 		Iterator<String> iterator = strarray.iterator();
 		String str = replaceDigitsPlace(strarray, iterator);
 		return str;
+		
+		
 	}
 	
 	private void checkInput(int i) {
